@@ -97,27 +97,50 @@ class ScheduleResolver
         return (int)$this->schedule->status;
     }
 
+//    public function getDelayDuration()
+//    {
+//        if (!is_null($this->actual_end_date)) {
+//            $planed = Carbon::parse($this->planed_end_date);
+//            $actual = Carbon::parse($this->actual_end_date);
+//            $this->delay_duration = $actual->diffInDays($planed);
+//
+//        }
+//        return $this->delay_duration;
+//
+//    }
     public function getDelayDuration()
     {
-        if (!is_null($this->actual_end_date)) {
-            $planed = Carbon::parse($this->planed_end_date);
-            $actual = Carbon::parse($this->actual_end_date);
-            $this->delay_duration = $actual->diffInDays($planed);
-
+        $default_duration = (integer)$this->schedule->default_duration;
+        if ($actual_duration = $this->getActualDurationInDays()) {
+            $this->delay_duration = $actual_duration - $default_duration;
         }
         return $this->delay_duration;
+    }
 
+    private function getActualDurationInDays()
+    {
+        if (!is_null($this->actual_end_date)) {
+            $actual_start = Carbon::parse($this->actual_st_date);
+            $actual_end = Carbon::parse($this->actual_end_date);
+            return $actual_end->diffInDays($actual_start);
+        }
+        return null;
     }
 
     public function getDelayPercentage()
     {
-        $delay = $this->getDelayDuration();
-        if (!is_null($delay)) {
-            $start = Carbon::parse($this->getPlanedStDate());
-            $end = Carbon::parse($this->getPlanedEndDate());
-            $this->delay_percentage = $delay / $end->diffInDays($start) * 100;
+        $default_duration = (integer)$this->schedule->default_duration;
+        if ($actual_duration = $this->getActualDurationInDays()) {
+            return (100 / $default_duration) * ($actual_duration - $default_duration);
         }
-        return (int)$this->delay_percentage;
+        return null;
+//        $delay = $this->getDelayDuration();
+//        if (!is_null($default_duration)) {
+//            $start = Carbon::parse($this->getPlanedStDate());
+//            $end = Carbon::parse($this->getPlanedEndDate());
+//            $this->delay_percentage = $delay / $end->diffInDays($start) * 100;
+//        }
+//        return (int)$this->delay_percentage;
 
     }
 

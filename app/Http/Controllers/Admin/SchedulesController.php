@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
+use App\Src\HierarchyData\HierarchyFactory;
 
 class SchedulesController extends Controller
 {
@@ -106,7 +107,14 @@ class SchedulesController extends Controller
             $schedule = Schedule::find($id);
             $schedule->update($update);
             $project = Project::find($attributes['project_id']);
-            return view('Admin.Layouts._schedule_table', ['project' => $project]);
+
+            $timeLinesCollection = [];
+            if (!empty($project->timeLines->all())) {
+                $timeLinesCollection = HierarchyFactory::factory($project->timeLines)->renderArray()->all();
+            }
+
+
+            return view('Admin.Layouts._schedule_table', ['project' => $project,'timeLines' => $timeLinesCollection]);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
