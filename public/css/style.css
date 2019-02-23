@@ -115,13 +115,15 @@
 .main-table tr td:nth-child(2) {
     width: 350px;
 }
-.table-bordered > thead > tr{
+
+.table-bordered > thead > tr {
     border: 1px solid #000000;
 }
+
 .main-table > tbody > tr > td, .main-table > tbody > tr > th, .main-table > tfoot > tr > td, .main-table > tfoot > tr > th, .main-table > thead > tr > td, .main-table > thead > tr > th {
     border-color: #000000;
     padding: 5px 10px;
-    color:#000000;
+    color: #000000;
 }
 
 .main-table > tbody > tr > td.child-container {
@@ -135,10 +137,12 @@
 .main-table > tbody > tr > td > table > tbody > tr > td:first-child {
     border-right-color: #80ff80;
 }
-.main-table > tbody > tr > td > table > tbody > tr > td:last-child{
+
+.main-table > tbody > tr > td > table > tbody > tr > td:last-child {
     border-left: 0;
 }
-.main-table > tbody > tr > td > table,.main-table{
+
+.main-table > tbody > tr > td > table, .main-table {
     border: 0;
 }
 
@@ -169,4 +173,46 @@
 .main-table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr > td > table > tbody > tr:first-child > td {
     background-color: #0000ff;
     color: #ffffff;
+}
+
+.schedule-title-row {
+    color: #ffffff;
+    background-color: #80ff80;
+}
+
+th.schedule-title-row:nth-of-type(2) {
+    background-color: #0D3349;
+}
+
+tbody.main-schedule-row > tr:first-child > td {
+    color: #ffffff;
+    background-color: #80ff80;
+}
+
+tbody.main-schedule-row:nth-of-type(2) > tr:first-child > td {
+    background-color: #0000ff;
+}
+tbody.main-schedule-row:nth-of-type(3) > tr:first-child > td {
+    background-color: #ffff00;
+}
+tbody.main-schedule-row:nth-of-type(4) > tr:first-child > td {
+    background-color: #ffff80;
+}
+tbody.main-schedule-row:nth-of-type(5) > tr:first-child > td {
+    background-color: #0000ff;
+}
+tbody.main-schedule-row:nth-of-type(6) > tr:first-child > td {
+    background-color: #0000ff;
+}
+tbody.main-schedule-row:nth-of-type(7) > tr:first-child > td {
+    background-color: #0000ff;
+}
+tbody.main-schedule-row:nth-of-type(8) > tr:first-child > td {
+    background-color: #0000ff;
+}
+tbody.main-schedule-row:nth-of-type(9) > tr:first-child > td {
+    background-color: #0000ff;
+}
+tbody.main-schedule-row:nth-of-type(10) > tr:first-child > td {
+    background-color: #0000ff;
 }

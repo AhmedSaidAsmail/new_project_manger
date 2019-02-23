@@ -1,6 +1,6 @@
 @foreach($timeLines as $timeLine)
     <tr>
-        <td colspan="15">
+        <td colspan="15" style="background-color: {{$colors['color']}}; color: #ffffff;">
             {!! $timeLine->getModel()->nameWithAllParents(' <i class="fas fa-angle-left"></i> ') !!}
         </td>
     </tr>
@@ -50,5 +50,5 @@
             <td class="en-label">{!! !is_null($resolver->getDelayDuration())?$resolver->getDelayDuration():"---" !!}</td>
         </tr>
     @endforeach
-    {!! timeLinesSons($timeLine) !!}
+    {!! timeLinesSons($timeLine,$project,$colors['child']) !!}
 @endforeach

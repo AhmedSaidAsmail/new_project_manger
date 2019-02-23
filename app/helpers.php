@@ -103,10 +103,16 @@ if (!function_exists('timeLinesChilds')) {
     }
 }
 if (!function_exists('timeLinesSons')) {
-    function timeLinesSons(ItemResolver $item)
+    function timeLinesSons(ItemResolver $item, $project, $color = null)
     {
         if ($item->haveChilds()) {
-            return view('Admin.Layouts._schedule_row', ['timeLines' => $item->getChilds()]);
+            if (is_null($color) || !isset($color['color']) || !isset($color['child'])) {
+                $color = [
+                    'color' => '##2980b9',
+                    'child' => null
+                ];
+            }
+            return view('Admin.Layouts._schedule_row', ['timeLines' => $item->getChilds(), 'project' => $project, 'colors' => $color]);
         }
 
     }

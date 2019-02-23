@@ -14,6 +14,21 @@ use Exception;
 class ProjectsController extends Controller
 {
     private $_path = "/documents/projects/";
+    private $time_lines_colors = [
+        'color' => '#2ecc71',
+        'child' => [
+            'color' => '#16a085',
+            'child' => [
+                'color' => '#f39c12',
+                'child' => [
+                    'color' => '#e74c3c',
+                    'child' => [
+                        'color' => '#8e44ad',
+                    ]
+                ]
+            ]
+        ]
+    ];
 
     /**
      * Display a listing of the resource.
@@ -103,7 +118,7 @@ class ProjectsController extends Controller
         if (!empty($project->timeLines->all())) {
             $timeLinesCollection = HierarchyFactory::factory($project->timeLines)->renderArray()->all();
         }
-        return view('Admin.projectsShow', ['project' => $project, 'timeLines' => $timeLinesCollection]);
+        return view('Admin.projectsShow', ['project' => $project, 'timeLines' => $timeLinesCollection, 'colors' => $this->time_lines_colors]);
     }
 
     /**
