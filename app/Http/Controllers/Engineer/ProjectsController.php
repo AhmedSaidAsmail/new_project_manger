@@ -1,14 +1,32 @@
 <?php
+
 namespace App\Http\Controllers\Engineer;
 
 use App\Models\Engineer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use RuntimeException;
+use App\Src\HierarchyData\HierarchyFactory;
 
 
 class ProjectsController extends Controller
 {
+    private $time_lines_colors = [
+        'color' => '#2ecc71',
+        'child' => [
+            'color' => '#16a085',
+            'child' => [
+                'color' => '#f39c12',
+                'child' => [
+                    'color' => '#e74c3c',
+                    'child' => [
+                        'color' => '#8e44ad',
+                    ]
+                ]
+            ]
+        ]
+    ];
+
     /**
      * @return \Illuminate\Http\Response
      */
@@ -75,7 +93,11 @@ class ProjectsController extends Controller
     {
         try {
             $project = $this->returnProject($id);
-            return view('Engineer.projectsShow', ['project' => $project]);
+            $timeLinesCollection = [];
+            if (!empty($project->timeLines->all())) {
+                $timeLinesCollection = HierarchyFactory::factory($project->timeLines)->renderArray()->all();
+            }
+            return view('Engineer.projectsShow', ['project' => $project, 'timeLines' => $timeLinesCollection, 'colors' => $this->time_lines_colors]);
         } catch (RuntimeException $e) {
             return $e->getMessage();
         }

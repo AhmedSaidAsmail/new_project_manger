@@ -125,7 +125,7 @@
                 }
 
             });
-            $("select.ajax-selection").change(function () {
+            $("input.ajax-selection").change(function () {
                 ajaxUpdate($(this));
             });
             $("input.ajax-input").focusout(function () {

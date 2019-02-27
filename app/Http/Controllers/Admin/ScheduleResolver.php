@@ -144,4 +144,19 @@ class ScheduleResolver
 
     }
 
+    public function getStatusName($status)
+    {
+        switch ($status) {
+            case null:
+                return "جاري";
+            case 0:
+                return "متوقف او لم يبدأ";
+            case 100:
+                return "منتهي";
+            default:
+                return sprintf("%%%u", 100 - (int)$status)." متأخر";
+
+        }
+    }
+
 }

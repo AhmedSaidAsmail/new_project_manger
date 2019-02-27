@@ -12,6 +12,22 @@ use App\Src\HierarchyData\HierarchyFactory;
 
 class SchedulesController extends Controller
 {
+    private $time_lines_colors = [
+        'color' => '#2ecc71',
+        'child' => [
+            'color' => '#16a085',
+            'child' => [
+                'color' => '#f39c12',
+                'child' => [
+                    'color' => '#e74c3c',
+                    'child' => [
+                        'color' => '#8e44ad',
+                    ]
+                ]
+            ]
+        ]
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -55,14 +71,14 @@ class SchedulesController extends Controller
 
     private function resolveDate(array &$attributes)
     {
-        if ($related=$attributes['related_to']) {
-            $attributes['planed_starting_date'] =$this->scheduleParentdate($related);
+        if ($related = $attributes['related_to']) {
+            $attributes['planed_starting_date'] = $this->scheduleParentdate($related);
         }
     }
 
     private function scheduleParentdate($related)
     {
-        $parent=Schedule::where('activity_id',$related)->first();
+        $parent = Schedule::where('activity_id', $related)->first();
         return $parent->planed_starting_date->addDays($parent->default_duration);
 
     }
@@ -107,14 +123,12 @@ class SchedulesController extends Controller
             $schedule = Schedule::find($id);
             $schedule->update($update);
             $project = Project::find($attributes['project_id']);
-
             $timeLinesCollection = [];
             if (!empty($project->timeLines->all())) {
                 $timeLinesCollection = HierarchyFactory::factory($project->timeLines)->renderArray()->all();
             }
 
-
-            return view('Admin.Layouts._schedule_table', ['project' => $project,'timeLines' => $timeLinesCollection]);
+            return view('Admin.Layouts._schedule_table', ['project' => $project, 'timeLines' => $timeLinesCollection, 'colors' => $this->time_lines_colors]);
         } catch (\Exception $e) {
             return $e->getMessage();
         }
