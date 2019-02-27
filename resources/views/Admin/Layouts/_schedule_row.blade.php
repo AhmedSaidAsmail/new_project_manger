@@ -29,12 +29,14 @@
                        value="{{$resolver->getActualEndDate()}}" disabled>
             </td>
             <td>
-                <input name="status" class="ajax-selection" list="status" value="{{$resolver->getStatusName($schedule->status)}}">
-                <datalist id="status">
-                    @foreach($resolver->getStatusOptions() as $status=>$option)
-                        <option value="{{$option}}">{{$status}}</option>
-                    @endforeach
-                </datalist>
+                {{--<input name="status" class="ajax-selection" list="status"--}}
+                       {{--value="{{$resolver->getStatusName($schedule->status)}}">--}}
+                <select name="status" class="form-control select2-single ajax-selection" dir="rtl">
+                    <option value="">جاري</option>
+                    @for($i=0;$i<=100;$i++)
+                        <option value="{{$i}}" {!! $i==$schedule->status?"selected":null !!}>{{$resolver->getStatusName($i)}}</option>
+                    @endfor
+                </select>
             </td>
             <td>
                 <div class="input-container">

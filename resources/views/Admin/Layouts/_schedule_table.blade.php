@@ -3,6 +3,7 @@
     @parent
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,500i,700" rel="stylesheet">
     <link href="{{asset('date_picker/css/datepicker.min.css')}}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css">
     <style>
 
         label.en-label {
@@ -85,7 +86,18 @@
     @parent
     <script src="{{asset('date_picker/js/datepicker.min.js')}}"></script>
     <script src="{{asset('date_picker/js/i18n/datepicker.en.js')}}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
     <script>
+        function select2PlugIn() {
+            $(".select2-single").select2({
+                theme: "bootstrap",
+                placeholder: "Select a State",
+                maximumSelectionSize: 6,
+                containerCssClass: ':all:'
+            });
+        }
+
+        select2PlugIn();
 
         function updateRows() {
             // Data Picker Inputs
@@ -125,7 +137,7 @@
                 }
 
             });
-            $("input.ajax-selection").change(function () {
+            $("select.ajax-selection").change(function () {
                 ajaxUpdate($(this));
             });
             $("input.ajax-input").focusout(function () {
@@ -152,6 +164,7 @@
                     success: function (response) {
                         container.html(response);
                         updateRows();
+                        select2PlugIn();
                         $("table.table").attr('data-ready-to-update', 'false');
                     }
 
