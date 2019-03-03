@@ -1,4 +1,4 @@
-<div id="quntty_tab" class="tab-pane fade" role="tabpanel">
+<div id="time_table_tab" class="tab-pane fade" role="tabpanel">
     <div class="row">
         <div class="col-md-12">
             {{-- add new schedule --}}
