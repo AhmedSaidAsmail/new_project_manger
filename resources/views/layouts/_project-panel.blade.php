@@ -153,9 +153,7 @@
         @include('Admin.Layouts.projectLetters')
         {{-- Letters --}}
         {{-- Qunatities --}}
-        <div id="quntty_tab" class="tab-pane fade" role="tabpanel">
-            <p>الكميات لاحقا في اصدار اخر</p>
-        </div>
+        @include('Admin.Layouts.projectQuantities')
         {{-- Qunatities --}}
         {{-- Tender Drawing --}}
         @include('Admin.Layouts.projectTenderDrawing')

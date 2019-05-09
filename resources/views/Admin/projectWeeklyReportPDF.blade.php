@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>report</title>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
+
     <!-- osama edit -->
     <style>
         body {
@@ -53,7 +53,7 @@
         .intro {
             background: url('{{asset('documents/projects/'.$project->image)}}') no-repeat left top;
             margin: auto;
-            background-size: cover ;
+            background-size: cover;
         }
 
         .intro-footer {
@@ -127,7 +127,7 @@
             }
 
             .pageintron {
-            size: letter;
+                size: letter;
                 width: 100%;
                 min-height: 940px;
                 overflow: hidden;
@@ -135,13 +135,14 @@
             }
 
             .page {
-            size: letter;
+                size: letter;
                 width: 100%;
                 min-height: 980px;
                 overflow: hidden;
                 position: relative;
 
             }
+
             .intro-title {
                 position: absolute;
                 text-align: center;
@@ -150,6 +151,7 @@
                 bottom: 285px;
                 font-size: 20px;
             }
+
             .bglogo {
                 background: url('{{asset('images/icon-back.png')}}') no-repeat;
                 background-size: 700px 975px;
@@ -157,7 +159,7 @@
             }
 
             .pagespiceal {
-            size: letter;
+                size: letter;
                 width: 100%;
                 min-height: 2900px;
                 overflow: hidden;
@@ -166,7 +168,7 @@
 
             .intro-title {
                 background-color: #333333;
-	   -webkit-print-color-adjust: exact;
+                -webkit-print-color-adjust: exact;
             }
 
             .print {
@@ -174,24 +176,27 @@
             }
 
         }
-        table{
-   	 max-width: 700px;
-   	
-   	 border: 1px solid #000000;
-   	 font-size: 16px;
-   	 text-align: right;
-   	 border-collapse: collapse;
-	}
-	
-	td{
-	border: 1px solid #000000;
-	
-	text-align: right;
-	padding: 2px;
-	vertical-align: center;
-	}
-	tr:nth-child(even) {background-color: #f2f2f2;}
-	
+
+        table {
+            max-width: 700px;
+
+            border: 1px solid #000000;
+            font-size: 16px;
+            text-align: right;
+            border-collapse: collapse;
+        }
+
+        td {
+            border: 1px solid #000000;
+
+            text-align: right;
+            padding: 2px;
+            vertical-align: center;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
 
         .table-insider {
             text-align: right;
@@ -227,7 +232,7 @@
         .img-container img {
             width: 695px;
             height: 435px;
-           
+
             display: inline;
         }
 
@@ -253,8 +258,9 @@
         .additional-insider {
             direction: rtl;
         }
+
         .additional-insider-1 {
-            
+
         }
     </style>
 </head>
@@ -354,225 +360,229 @@
         {{--</table>--}}
         @if(count($report->project->consultantEngineers)>0)
 
-        <h1>الهيكل التنظيمي لجهاز الاشراف</h1>
-        <table class="table-insider">
-            <tr>
-                <td class="special">الاسم</td>
-                <td class="special">المهنة</td>
-            </tr>
-            @foreach($report->project->consultantEngineers as $consultantEngineer)
+            <h1>الهيكل التنظيمي لجهاز الاشراف</h1>
+            <table class="table-insider">
                 <tr>
-                    <td>{{$consultantEngineer->engineer->name}}</td>
-                    <td>{{Lang::get('terms.'.$consultantEngineer->consultant_engineer_position)}}</td>
+                    <td class="special">الاسم</td>
+                    <td class="special">المهنة</td>
                 </tr>
+                @foreach($report->project->consultantEngineers as $consultantEngineer)
+                    <tr>
+                        <td>{{$consultantEngineer->engineer->name}}</td>
+                        <td>{{Lang::get('terms.'.$consultantEngineer->consultant_engineer_position)}}</td>
+                    </tr>
 
-            @endforeach
-
-        </table>
-    </div>
-  @endif
-   @if(count($report->contractorTeam)>0)
-    <div class="page bglogo">
-        <h1>الهيكل التنظيمي لجهاز المقاول</h1>
-        <table class="table-insider">
-            <tr>
-                <td class="special">المهنة</td>
-                <td class="special">العدد</td>
-                <td class="special">الاسم</td>
-            </tr>
-            @foreach($report->contractorTeam as $contractorTeam)
-                <tr>
-                    <td>{{$contractorTeam->position}}</td>
-                    <td>{{$contractorTeam->number}}</td>
-                    <td>{{$contractorTeam->name}}</td>
-                </tr>
                 @endforeach
 
-        </table>
+            </table>
+        @endif
     </div>
+    @if(count($report->contractorTeam)>0)
+        <div class="page bglogo">
+            <h1>الهيكل التنظيمي لجهاز المقاول</h1>
+            <table class="table-insider">
+                <tr>
+                    <td class="special">المهنة</td>
+                    <td class="special">العدد</td>
+                    <td class="special">الاسم</td>
+                </tr>
+                @foreach($report->contractorTeam as $contractorTeam)
+                    <tr>
+                        <td>{{$contractorTeam->position}}</td>
+                        <td>{{$contractorTeam->number}}</td>
+                        <td>{{$contractorTeam->name}}</td>
+                    </tr>
+                @endforeach
+
+            </table>
+        </div>
     @endif
     @if(count($report->tools)>0)
-    <div class="page bglogo">
-        <h1>معدات المقاول وأدوات بالموقع </h1>
-        <table class="table-insider">
-            <tr>
-                <td class="special">المعدة</td>
-                <td class="special">العدد</td>
-                <td class="special">ملاحظات</td>
-            </tr>
-            @foreach($report->tools as $tool)
+        <div class="page bglogo">
+            <h1>معدات المقاول وأدوات بالموقع </h1>
+            <table class="table-insider">
                 <tr>
-                    <td>{{$tool->tool}}</td>
-                    <td>{{$tool->number}}</td>
-                    <td>{{$tool->note}}</td>
+                    <td class="special">المعدة</td>
+                    <td class="special">العدد</td>
+                    <td class="special">ملاحظات</td>
                 </tr>
-            @endforeach
-        </table>
-    </div>
+                @foreach($report->tools as $tool)
+                    <tr>
+                        <td>{{$tool->tool}}</td>
+                        <td>{{$tool->number}}</td>
+                        <td>{{$tool->note}}</td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
     @endif
     @if(isset($report->schedule))
-    <div class="page">
-        <h1>البرنامج الزمنى</h1>
+        <div class="page">
+            <h1>البرنامج الزمنى</h1>
 
-        <div class="additional-insider">
-            <img src="{{asset('documents/projects/w_report/'.$report->schedule)}}" style="width: 100%; height: 100%">
+            <div class="additional-insider">
+                <img src="{{asset('documents/projects/w_report/'.$report->schedule)}}"
+                     style="width: 100%; height: 100%">
+            </div>
         </div>
-    </div>
-@endif
-@if(isset($report->additionalInfo->report_status ) )
-    <div class="page bglogo">
-        <h1>بيان الحالة</h1>
+    @endif
+    @if(isset($report->additionalInfo->report_status ) )
+        <div class="page bglogo">
+            <h1>بيان الحالة</h1>
 
-        <div class="additional-insider">
-            {!! $report->additionalInfo->report_status !!}
-        </div>
+            <div class="additional-insider">
+                {!! $report->additionalInfo->report_status !!}
+            </div>
         </div>
         <div class="page bglogo">
-@endif
-        @if(isset($report->additionalInfo->working_rate))
-        <h1>معدل سير العمل</h1>
+            @endif
+            @if(isset($report->additionalInfo->working_rate))
+                <h1>معدل سير العمل</h1>
 
-        <div class="additional-insider">
-            {!! $report->additionalInfo->working_rate !!}
+                <div class="additional-insider">
+                    {!! $report->additionalInfo->working_rate !!}
+                </div>
         </div>
-    </div>
     @endif
-            @if(isset($report->additionalInfo->completion_Schedule))
-    <div class="page bglogo">
-        <h1>جدول نسب الانجاز</h1>
+    @if(isset($report->additionalInfo->completion_Schedule))
+        <div class="page bglogo">
+            <h1>جدول نسب الانجاز</h1>
 
-        <div class="additional-insider" style="direction: rtl;">
-            {!! $report->additionalInfo->completion_Schedule !!}
+            <div class="additional-insider" style="direction: rtl;">
+                {!! $report->additionalInfo->completion_Schedule !!}
+            </div>
         </div>
-    </div>
     @endif
-      @if(isset($report->additionalInfo->done_working))
-    <div class="pagespiceal">
-        <h1>بيان الاعمال المنفذه بالمشروع </h1>
+    @if(isset($report->additionalInfo->done_working))
+        <div class="pagespiceal">
+            <h1>بيان الاعمال المنفذه بالمشروع </h1>
 
-        <div class="additional-insider-1">
-            {!! $report->additionalInfo->done_working !!}
+            <div class="additional-insider-1">
+                {!! $report->additionalInfo->done_working !!}
+            </div>
         </div>
-    </div>
     @endif
-            @if(isset($report->additionalInfo->working_next_month))
-    <div class="page bglogo">
-        <h1>وصف الاعمال المتوقع انجازها خلال الشهر القادم </h1>
+    @if(isset($report->additionalInfo->working_next_month))
+        <div class="page bglogo">
+            <h1>وصف الاعمال المتوقع انجازها خلال الشهر القادم </h1>
 
-        <div class="additional-insider">
-            {!! $report->additionalInfo->working_next_month !!}
+            <div class="additional-insider">
+                {!! $report->additionalInfo->working_next_month !!}
+            </div>
         </div>
-    </div>
     @endif
     @if(isset($report->additionalInfo->consultant_note))
-    <div class="page">
-        <h1>ملاحظات الاستشارى على الاعمال بالموقع </h1>
+        <div class="page">
+            <h1>ملاحظات الاستشارى على الاعمال بالموقع </h1>
 
-        <div class="additional-insider">
-            {!! $report->additionalInfo->consultant_note !!}
+            <div class="additional-insider">
+                {!! $report->additionalInfo->consultant_note !!}
+            </div>
         </div>
-    </div>
     @endif
-            @if(isset($report->additionalInfo->contractor_required))
-    <div class="page bglogo">
-        <h1>المطلوب من المقاول </h1>
+    @if(isset($report->additionalInfo->contractor_required))
+        <div class="page bglogo">
+            <h1>المطلوب من المقاول </h1>
 
-        <div class="additional-insider">
-            {!! $report->additionalInfo->contractor_required !!}
+            <div class="additional-insider">
+                {!! $report->additionalInfo->contractor_required !!}
+            </div>
         </div>
-    </div>
     @endif
-            @if(isset($report->additionalInfo->owner_required))
-    <div class="page bglogo">
-        <h1>الالمطلوب من المالك </h1>
+    @if(isset($report->additionalInfo->owner_required))
+        <div class="page bglogo">
+            <h1>الالمطلوب من المالك </h1>
 
-        <div class="additional-insider">
-            {!! $report->additionalInfo->owner_required !!}
+            <div class="additional-insider">
+                {!! $report->additionalInfo->owner_required !!}
+            </div>
         </div>
-    </div>
     @endif
     @if(count($report->tests)>0)
-    <div class="page">
-        <h1>نتائج الاختبارات </h1>
+        <div class="page">
+            <h1>نتائج الاختبارات </h1>
 
-        <div class="additional-insider">
-            @foreach($report->tests->chunk(2) as $chunk)
-                <div class="file-container">
-                    @foreach($chunk as $test)
-                        <img src="{{asset('documents/projects/tests/'.$test->test->document)}}">
-                    @endforeach
-                </div>
-            @endforeach
+            <div class="additional-insider">
+                @foreach($report->tests->chunk(2) as $chunk)
+                    <div class="file-container">
+                        @foreach($chunk as $test)
+                            <img src="{{asset('documents/projects/tests/'.$test->test->document)}}">
+                        @endforeach
+                    </div>
+                @endforeach
 
+            </div>
         </div>
-    </div>
     @endif
-            @if(count($report->requests)>0 || count($report->submittals)>0)
-    <div class="page">
-        <h1>المخاطبات ومحاضر الاجتماعات </h1>
-        <div class="additional-insider">
-        
-        
-        
-            @foreach($report->requests->chunk(2) as $chunk)
+    @if(count($report->requests)>0 || count($report->submittals)>0)
+        <div class="page">
+            <h1>المخاطبات ومحاضر الاجتماعات </h1>
+            <div class="additional-insider">
 
-                <div class="file-container">
 
-                    @foreach($chunk as $requests)
-                        <img src="{{asset('documents/projects/requests/'.$requests->request->document)}}">
-                        <h1></h1>
-                    @endforeach
-                </div>
-            @endforeach
+                @foreach($report->requests->chunk(2) as $chunk)
 
-            @foreach($report->submittals->chunk(2) as $chunk)
-                <div class="file-container">
+                    <div class="file-container">
 
-                    @foreach($chunk as $submittals)
-                        <h1></h1>
-                        <img src="{{asset('documents/projects/submittals/'.$submittals->submittal->document)}}">
+                        @foreach($chunk as $requests)
+                            <img src="{{asset('documents/projects/requests/'.$requests->request->document)}}">
+                            <h1></h1>
+                        @endforeach
+                    </div>
+                @endforeach
 
-                    @endforeach
-                </div>
-            @endforeach
+                @foreach($report->submittals->chunk(2) as $chunk)
+                    <div class="file-container">
+
+                        @foreach($chunk as $submittals)
+                            <h1></h1>
+                            <img src="{{asset('documents/projects/submittals/'.$submittals->submittal->document)}}">
+
+                        @endforeach
+                    </div>
+                @endforeach
+
+            </div>
 
         </div>
-       
-    </div>
-     </br>
-      @endif
-        @if(count($report->files)>0)
-    <div class="page">
-        <h1>الصور الفوتوغرافيه</h1>
-        <div class="additional-insider">
-            @foreach($report->files->chunk(2) as $chunk)
-                <div class="img-container">
-                    @foreach($chunk as $file)
-                        <div>
-                            <img src="{{asset('documents/projects/files/'.$file->file->document)}}">   <span style="display: block; text-align: center; font-weight: bold;">{{$file->file->description}}</span>
-                        </div>
-                        </br>
-                    @endforeach
-                </div>
-            @endforeach
-            </br><div style="height: 5px"></div>
-        </div>
-    </div>
-    </br>
+        </br>
     @endif
-    <div class="page bglogo">
-        <h1>توصيات الاستشاري </h1>
-        <div class="additional-insider">
-           <span style="display: block; text-align: right; font-size:16px;"> {!! $report->additionalInfo->consultant_recommendations !!} </span>
+    @if(count($report->files)>0)
+        <div class="page">
+            <h1>الصور الفوتوغرافيه</h1>
+            <div class="additional-insider">
+                @foreach($report->files->chunk(2) as $chunk)
+                    <div class="img-container">
+                        @foreach($chunk as $file)
+                            <div>
+                                <img src="{{asset('documents/projects/files/'.$file->file->document)}}"> <span
+                                        style="display: block; text-align: center; font-weight: bold;">{{$file->file->description}}</span>
+                            </div>
+                            </br>
+                        @endforeach
+                    </div>
+                    @endforeach
+                    </br>
+                    <div style="height: 5px"></div>
+            </div>
         </div>
+        </br>
+    @endif
+    @if(!is_null($report->additionalInfo))
+        <div class="page bglogo">
+            <h1>توصيات الاستشاري </h1>
+            <div class="additional-insider">
+                <span style="display: block; text-align: right; font-size:16px;"> {!! $report->additionalInfo->consultant_recommendations !!} </span>
+            </div>
 
 
-        <div class="additional-insider">
-            <span style="font-weight: bold; text-align: right;">{!! $report->text !!}</span>
-            <span style="font-weight: bold; text-align:left ; margin-left: 0px;">مدير المشروع </span>
+            <div class="additional-insider">
+                <span style="font-weight: bold; text-align: right;">{!! $report->text !!}</span>
+                <span style="font-weight: bold; text-align:left ; margin-left: 0px;">مدير المشروع </span>
 
+            </div>
         </div>
-    </div>
+    @endif
 </div>
 </div>
 

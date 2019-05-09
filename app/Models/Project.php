@@ -40,6 +40,11 @@ class Project extends Model
         return $this->hasOne(Project_quantities::class);
     }
 
+    public function quantities()
+    {
+        return $this->hasMany(Quantity::class);
+    }
+
     public function documents()
     {
         return $this->hasMany(Project_document::class);

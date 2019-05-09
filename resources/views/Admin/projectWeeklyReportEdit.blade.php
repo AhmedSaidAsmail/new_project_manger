@@ -48,7 +48,9 @@ switch (true) {
         <div class="panel panel-default card-view">
             <div class="panel-body">
                 <div class="form-wrap">
-                    <form method="post" action="{{route('weekly-report.update',['projectId'=>$projectId,'id'=>$report->id])}}" enctype="multipart/form-data">
+                    <form method="post"
+                          action="{{route('weekly-report.update',['projectId'=>$projectId,'id'=>$report->id])}}"
+                          enctype="multipart/form-data">
                         {{csrf_field()}}
                         <input type="hidden" name="_method" value="PUT">
 
@@ -71,7 +73,8 @@ switch (true) {
                                                     <div class="input-group">
                                                         <div class="input-group-addon ">
                                                             <i class="icon-user"></i></div>
-                                                        <input type="text" class="form-control" value="{{$report->project->name}}" name="name" readonly>
+                                                        <input type="text" class="form-control"
+                                                               value="{{$report->project->name}}" name="name" readonly>
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,7 +85,9 @@ switch (true) {
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fas fa-calendar"></i></div>
-                                                        <input type="text" value="{{$report->starting_date}}" class="form-control" name="starting_date" data-mask="9999-99-99" placeholder="" required>
+                                                        <input type="text" value="{{$report->starting_date}}"
+                                                               class="form-control" name="starting_date"
+                                                               data-mask="9999-99-99" placeholder="" required>
                                                     </div>
                                                     <span class="text-muted">yyyy-mm-dd</span>
                                                 </div>
@@ -94,7 +99,9 @@ switch (true) {
                                                     <div class="input-group">
                                                         <div class="input-group-addon">
                                                             <i class="fas fa-calendar"></i></div>
-                                                        <input type="text" value="{{$report->ending_date}}" class="form-control" name="ending_date" data-mask="9999-99-99" placeholder="" required>
+                                                        <input type="text" value="{{$report->ending_date}}"
+                                                               class="form-control" name="ending_date"
+                                                               data-mask="9999-99-99" placeholder="" required>
                                                     </div>
                                                     <span class="text-muted">yyyy-mm-dd</span>
                                                 </div>
@@ -103,31 +110,45 @@ switch (true) {
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" for="">نسبة الانجاز المالية</label>
+                                                    <label class="control-label mb-10" for="">نسبة الانجاز
+                                                        المالية</label>
 
                                                     <div class="input-group">
-                                                        <div class="input-group-addon"><i class="fas fa-percent"></i></div>
-                                                        <input type="number" value="{{$report->financial_achievement_ratio}}" class="form-control" name="financial_achievement_ratio" required>
+                                                        <div class="input-group-addon"><i class="fas fa-percent"></i>
+                                                        </div>
+                                                        <input type="number"
+                                                               value="{{$report->financial_achievement_ratio}}"
+                                                               class="form-control" name="financial_achievement_ratio"
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" for="">نسبة الانجاز الفعلية</label>
+                                                    <label class="control-label mb-10" for="">نسبة الانجاز
+                                                        الفعلية</label>
 
                                                     <div class="input-group">
-                                                        <div class="input-group-addon"><i class="fas fa-percent"></i></div>
-                                                        <input type="number" value="{{$report->actual_completion_rate}}" class="form-control" name="actual_completion_rate" required>
+                                                        <div class="input-group-addon"><i class="fas fa-percent"></i>
+                                                        </div>
+                                                        <input type="number" value="{{$report->actual_completion_rate}}"
+                                                               class="form-control" name="actual_completion_rate"
+                                                               required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="form-group">
-                                                    <label class="control-label mb-10" for="">نسبة الانجاز المطلوبة</label>
+                                                    <label class="control-label mb-10" for="">نسبة الانجاز
+                                                        المطلوبة</label>
 
                                                     <div class="input-group">
-                                                        <div class="input-group-addon"><i class="fas fa-percent"></i></div>
-                                                        <input type="number" value="{{$report->percentage_achievement_required}}" class="form-control" name="percentage_achievement_required" required>
+                                                        <div class="input-group-addon"><i class="fas fa-percent"></i>
+                                                        </div>
+                                                        <input type="number"
+                                                               value="{{$report->percentage_achievement_required}}"
+                                                               class="form-control"
+                                                               name="percentage_achievement_required" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -145,7 +166,8 @@ switch (true) {
                                 </div>
                                 <div class="collapse panel-collapse" id="project_results">
                                     <div class="panel-body">
-                                        <div id="projectTestResult" data-parent="{{$report->project->id}}" data-ajax--url="{{route('tests.getAccordingToDate')}}">
+                                        <div id="projectTestResult" data-parent="{{$report->project->id}}"
+                                             data-ajax--url="{{route('tests.getAccordingToDate')}}">
                                             <div class="row">
                                                 @foreach($report->tests as $test)
                                                     @if(getFileType($test->test->document)['type']=="image")
@@ -170,7 +192,8 @@ switch (true) {
                                 </div>
                                 <div class="collapse panel-collapse" id="project_requests">
                                     <div class="panel-body">
-                                        <div id="projectRequestResult" data-parent="{{$report->project->id}}" data-ajax--url="{{route('requests.getAccordingToDate')}}">
+                                        <div id="projectRequestResult" data-parent="{{$report->project->id}}"
+                                             data-ajax--url="{{route('requests.getAccordingToDate')}}">
                                             <div class="row">
                                                 @foreach($report->requests as $request)
                                                     @if(getFileType($request->request->document)['type']=="image")
@@ -182,7 +205,8 @@ switch (true) {
                                             </div>
 
                                         </div>
-                                        <div id="projectSubmittalsResult" data-parent="{{$report->project->id}}" data-ajax--url="{{route('submittals.getAccordingToDate')}}">
+                                        <div id="projectSubmittalsResult" data-parent="{{$report->project->id}}"
+                                             data-ajax--url="{{route('submittals.getAccordingToDate')}}">
                                             <div class="row">
                                                 @foreach($report->submittals as $submittal)
                                                     @if(getFileType($submittal->submittal->document)['type']=="image")
@@ -208,7 +232,8 @@ switch (true) {
                                 <div class="collapse panel-collapse" id="project_photos">
                                     <div class="panel-body">
 
-                                        <div id="projectFileResult" data-parent="{{$report->project->id}}" data-ajax--url="{{route('project-files.getAccordingToDate')}}">
+                                        <div id="projectFileResult" data-parent="{{$report->project->id}}"
+                                             data-ajax--url="{{route('project-files.getAccordingToDate')}}">
                                             <div class="row">
                                                 @foreach($report->files as $file)
                                                     @if(getFileType($file->file->document)['type']=="image")
@@ -237,15 +262,20 @@ switch (true) {
                                             <?php $arrangementTeam = 1;?>
                                             @foreach($report->contractorTeam as $contractorTeam)
                                                 <div class="row" id="contractor_team" data-index="{{$arrangementTeam}}">
-                                                    <input type="hidden" name="contractor_team[{{$arrangementTeam}}][id]" value="{{$contractorTeam->id}}">
+                                                    <input type="hidden"
+                                                           name="contractor_team[{{$arrangementTeam}}][id]"
+                                                           value="{{$contractorTeam->id}}">
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
                                                             <label class="control-label mb-10" for="">المهنة</label>
 
                                                             <div class="input-group">
-                                                                <div class="input-group-addon"><i class="fab fa-gg-circle fa-lg"></i></div>
-                                                                <input class="form-control" name="contractor_team[{{$arrangementTeam}}][position]" value="{{$contractorTeam->position}}">
+                                                                <div class="input-group-addon"><i
+                                                                            class="fab fa-gg-circle fa-lg"></i></div>
+                                                                <input class="form-control"
+                                                                       name="contractor_team[{{$arrangementTeam}}][position]"
+                                                                       value="{{$contractorTeam->position}}">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -254,8 +284,13 @@ switch (true) {
                                                             <label class="control-label mb-10" for="">العدد</label>
 
                                                             <div class="input-group">
-                                                                <div class="input-group-addon"><i class="fas fa-sort-numeric-up fa-lg"></i></div>
-                                                                <input type="number" value="{{$contractorTeam->number}}" class="form-control" name="contractor_team[{{$arrangementTeam}}][number]" required="">
+                                                                <div class="input-group-addon"><i
+                                                                            class="fas fa-sort-numeric-up fa-lg"></i>
+                                                                </div>
+                                                                <input type="number" value="{{$contractorTeam->number}}"
+                                                                       class="form-control"
+                                                                       name="contractor_team[{{$arrangementTeam}}][number]"
+                                                                       required="">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -264,13 +299,17 @@ switch (true) {
                                                             <label class="control-label mb-10" for="">الاسم</label>
 
                                                             <div class="input-group">
-                                                                <div class="input-group-addon"><i class="fas fa-male fa-lg"></i></div>
-                                                                <input class="form-control" name="contractor_team[{{$arrangementTeam}}][name]" value="{{$contractorTeam->name}}">
+                                                                <div class="input-group-addon"><i
+                                                                            class="fas fa-male fa-lg"></i></div>
+                                                                <input class="form-control"
+                                                                       name="contractor_team[{{$arrangementTeam}}][name]"
+                                                                       value="{{$contractorTeam->name}}">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <a href="#" id="removeRow" style="display: block; padding-top: 35px;">
+                                                        <a href="#" id="removeRow"
+                                                           style="display: block; padding-top: 35px;">
                                                             <i class="fas fa-minus-circle fa-2x text-danger"></i>
                                                         </a>
                                                     </div>
@@ -302,34 +341,51 @@ switch (true) {
                                             <?php $arrangementTool = 1; ?>
                                             @foreach($report->tools as $tool)
                                                 <div class="row" id="contractor_tool" data-index="{{$arrangementTool}}">
-                                                    <input type="hidden" value="{{$tool->id}}" name="contractor_tool[{{$arrangementTool}}][id]">
+                                                    <input type="hidden" value="{{$tool->id}}"
+                                                           name="contractor_tool[{{$arrangementTool}}][id]">
 
                                                     <div class="col-md-4">
-                                                        <div class="form-group"><label class="control-label mb-10" for="">المعدة</label>
+                                                        <div class="form-group"><label class="control-label mb-10"
+                                                                                       for="">المعدة</label>
 
                                                             <div class="input-group">
-                                                                <div class="input-group-addon"><i class="fab fa-gg-circle fa-lg"></i></div>
-                                                                <input class="form-control" name="contractor_tool[{{$arrangementTool}}][tool]" value="{{$tool->tool}}"></div>
+                                                                <div class="input-group-addon"><i
+                                                                            class="fab fa-gg-circle fa-lg"></i></div>
+                                                                <input class="form-control"
+                                                                       name="contractor_tool[{{$arrangementTool}}][tool]"
+                                                                       value="{{$tool->tool}}"></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-3">
-                                                        <div class="form-group"><label class="control-label mb-10" for="">العدد</label>
+                                                        <div class="form-group"><label class="control-label mb-10"
+                                                                                       for="">العدد</label>
 
                                                             <div class="input-group">
-                                                                <div class="input-group-addon"><i class="fas fa-sort-numeric-up fa-lg"></i></div>
-                                                                <input type="number" value="{{$tool->number}}" class="form-control" name="contractor_tool[{{$arrangementTool}}][number]" required=""></div>
+                                                                <div class="input-group-addon"><i
+                                                                            class="fas fa-sort-numeric-up fa-lg"></i>
+                                                                </div>
+                                                                <input type="number" value="{{$tool->number}}"
+                                                                       class="form-control"
+                                                                       name="contractor_tool[{{$arrangementTool}}][number]"
+                                                                       required=""></div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-4">
-                                                        <div class="form-group"><label class="control-label mb-10" for="">الملاحظات</label>
+                                                        <div class="form-group"><label class="control-label mb-10"
+                                                                                       for="">الملاحظات</label>
 
                                                             <div class="input-group">
-                                                                <div class="input-group-addon"><i class="fas fa-male fa-lg"></i></div>
-                                                                <input class="form-control" value="{{$tool->note}}" name="contractor_tool[{{$arrangementTool}}][note]"></div>
+                                                                <div class="input-group-addon"><i
+                                                                            class="fas fa-male fa-lg"></i></div>
+                                                                <input class="form-control" value="{{$tool->note}}"
+                                                                       name="contractor_tool[{{$arrangementTool}}][note]">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-md-1">
-                                                        <a href="#" id="removeRow" style="display: block; padding-top: 35px;"><i class="fas fa-minus-circle fa-2x text-danger"></i></a>
+                                                        <a href="#" id="removeRow"
+                                                           style="display: block; padding-top: 35px;"><i
+                                                                    class="fas fa-minus-circle fa-2x text-danger"></i></a>
                                                     </div>
                                                 </div>
                                                 <?php $arrangementTool++; ?>
@@ -379,7 +435,10 @@ switch (true) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea class="tinymce" name="report_additional[done_working]">{{$report->additionalInfo->done_working}}</textarea>
+                                                <textarea class="tinymce"
+                                                          name="report_additional[done_working]">
+                                                    {!! !is_null($report->additionalInfo)?$report->additionalInfo->done_working:null !!}
+                                                </textarea>
                                             </div>
                                         </div>
 
@@ -398,7 +457,10 @@ switch (true) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea class="tinymce" name="report_additional[report_status]">{{$report->additionalInfo->report_status}}</textarea>
+                                                <textarea class="tinymce"
+                                                          name="report_additional[report_status]">
+                                                    {!! !is_null($report->additionalInfo)?$report->additionalInfo->report_status:null !!}
+                                                </textarea>
                                             </div>
                                         </div>
 
@@ -417,7 +479,10 @@ switch (true) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea class="tinymce" name="report_additional[working_rate]">{{$report->additionalInfo->working_rate}}</textarea>
+                                                <textarea class="tinymce"
+                                                          name="report_additional[working_rate]">
+                                                    {!! !is_null($report->additionalInfo)?$report->additionalInfo->working_rate:null !!}
+                                                </textarea>
                                             </div>
                                         </div>
 
@@ -436,7 +501,10 @@ switch (true) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea class="tinymce" name="report_additional[completion_Schedule]">{{$report->additionalInfo->completion_Schedule}}</textarea>
+                                                <textarea class="tinymce"
+                                                          name="report_additional[completion_Schedule]">
+                                                    {!! !is_null($report->additionalInfo)?$report->additionalInfo->completion_Schedule:null !!}
+                                                </textarea>
                                             </div>
                                         </div>
 
@@ -455,7 +523,10 @@ switch (true) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea class="tinymce" name="report_additional[working_next_month]">{{$report->additionalInfo->working_next_month}}</textarea>
+                                                <textarea class="tinymce"
+                                                          name="report_additional[working_next_month]">
+                                                    {!! !is_null($report->additionalInfo)?$report->additionalInfo->working_next_month:null !!}
+                                                </textarea>
                                             </div>
                                         </div>
 
@@ -474,7 +545,10 @@ switch (true) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea class="tinymce" name="report_additional[consultant_note]">{{$report->additionalInfo->consultant_note}}</textarea>
+                                                <textarea class="tinymce"
+                                                          name="report_additional[consultant_note]">
+                                                    {!! !is_null($report->additionalInfo)?$report->additionalInfo->consultant_note:null !!}
+                                                </textarea>
                                             </div>
                                         </div>
 
@@ -493,7 +567,10 @@ switch (true) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea class="tinymce" name="report_additional[contractor_required]">{{$report->additionalInfo->contractor_required}}</textarea>
+                                                <textarea class="tinymce"
+                                                          name="report_additional[contractor_required]">
+                                                    {!! !is_null($report->additionalInfo)?$report->additionalInfo->contractor_required:null !!}
+                                                </textarea>
                                             </div>
                                         </div>
 
@@ -512,7 +589,10 @@ switch (true) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea class="tinymce" name="report_additional[owner_required]">{{$report->additionalInfo->owner_required}}</textarea>
+                                                <textarea class="tinymce"
+                                                          name="report_additional[owner_required]">
+                                                    {!! !is_null($report->additionalInfo)?$report->additionalInfo->owner_required:null !!}
+                                                </textarea>
                                             </div>
                                         </div>
 
@@ -522,7 +602,8 @@ switch (true) {
                             <div class="panel-primary panel">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a href="#consultant_recommendations" data-parent="#report" data-toggle="collapse">
+                                        <a href="#consultant_recommendations" data-parent="#report"
+                                           data-toggle="collapse">
                                             توصيات الاستشاري
                                         </a>
                                     </h4>
@@ -531,7 +612,10 @@ switch (true) {
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
-                                                <textarea class="tinymce" name="report_additional[consultant_recommendations]">{{$report->additionalInfo->consultant_recommendations}}</textarea>
+                                                <textarea class="tinymce"
+                                                          name="report_additional[consultant_recommendations]">
+                                                    {!! !is_null($report->additionalInfo)?$report->additionalInfo->consultant_recommendations:null !!}
+                                                </textarea>
                                             </div>
                                         </div>
 
@@ -568,7 +652,8 @@ switch (true) {
 
 @endsection
 @section('additional-css')
-    <link href="{{asset('template/vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{asset('template/vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css')}}"
+          rel="stylesheet" type="text/css"/>
     <style>
 
         .panel-body .row {
@@ -601,37 +686,37 @@ switch (true) {
                 var lastIndex = destiny.find('#contractor_team:last-child').length ? destiny.find('#contractor_team:last-child').attr('data-index') : 0;
                 var index = parseInt(lastIndex) + 1;
                 destiny.append('<div class="row" id="contractor_team" data-index="' + index + '"> ' +
-                        '<div class="col-md-4"> ' +
-                        '<div class="form-group"> ' +
-                        '<label class="control-label mb-10" for="">المهنة</label> ' +
-                        '<div class="input-group"> ' +
-                        '<div class="input-group-addon"><i class="fab fa-gg-circle fa-lg"></i></div> ' +
-                        '<input class="form-control" name="contractor_team[' + index + '][position]"> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '<div class="col-md-3"> ' +
-                        '<div class="form-group"> ' +
-                        '<label class="control-label mb-10" for="">العدد</label> ' +
-                        '<div class="input-group"> ' +
-                        '<div class="input-group-addon"><i class="fas fa-sort-numeric-up fa-lg"></i></div> ' +
-                        '<input type="number" value="1" class="form-control" name="contractor_team[' + index + '][number]" required> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '<div class="col-md-4"> ' +
-                        '<div class="form-group"> ' +
-                        '<label class="control-label mb-10" for="">الاسم</label> ' +
-                        '<div class="input-group"> ' +
-                        '<div class="input-group-addon"><i class="fas fa-male fa-lg"></i></div> ' +
-                        '<input class="form-control" name="contractor_team[' + index + '][name]"> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '<div class="col-md-1"> ' +
-                        '<a href="#" id="removeRow" style="display: block; padding-top: 35px;"><i class="fas fa-minus-circle fa-2x text-danger"></i></a> ' +
-                        '</div> ' +
-                        '</div>');
+                    '<div class="col-md-4"> ' +
+                    '<div class="form-group"> ' +
+                    '<label class="control-label mb-10" for="">المهنة</label> ' +
+                    '<div class="input-group"> ' +
+                    '<div class="input-group-addon"><i class="fab fa-gg-circle fa-lg"></i></div> ' +
+                    '<input class="form-control" name="contractor_team[' + index + '][position]"> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '<div class="col-md-3"> ' +
+                    '<div class="form-group"> ' +
+                    '<label class="control-label mb-10" for="">العدد</label> ' +
+                    '<div class="input-group"> ' +
+                    '<div class="input-group-addon"><i class="fas fa-sort-numeric-up fa-lg"></i></div> ' +
+                    '<input type="number" value="1" class="form-control" name="contractor_team[' + index + '][number]" required> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '<div class="col-md-4"> ' +
+                    '<div class="form-group"> ' +
+                    '<label class="control-label mb-10" for="">الاسم</label> ' +
+                    '<div class="input-group"> ' +
+                    '<div class="input-group-addon"><i class="fas fa-male fa-lg"></i></div> ' +
+                    '<input class="form-control" name="contractor_team[' + index + '][name]"> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '<div class="col-md-1"> ' +
+                    '<a href="#" id="removeRow" style="display: block; padding-top: 35px;"><i class="fas fa-minus-circle fa-2x text-danger"></i></a> ' +
+                    '</div> ' +
+                    '</div>');
                 removeRow();
             });
 
@@ -642,40 +727,41 @@ switch (true) {
                 var lastIndex = destiny.find('#contractor_tool:last-child').length ? destiny.find('#contractor_tool:last-child').attr('data-index') : 0;
                 var index = parseInt(lastIndex) + 1;
                 destiny.append('<div class="row" id="contractor_tool" data-index="' + index + '"> ' +
-                        '<div class="col-md-4"> ' +
-                        '<div class="form-group"> ' +
-                        '<label class="control-label mb-10" for="">المعدة</label> ' +
-                        '<div class="input-group"> ' +
-                        '<div class="input-group-addon"><i class="fab fa-gg-circle fa-lg"></i></div> ' +
-                        '<input class="form-control" name="contractor_tool[' + index + '][tool]"> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '<div class="col-md-3"> ' +
-                        '<div class="form-group"> ' +
-                        '<label class="control-label mb-10" for="">العدد</label> ' +
-                        '<div class="input-group"> ' +
-                        '<div class="input-group-addon"><i class="fas fa-sort-numeric-up fa-lg"></i></div> ' +
-                        '<input type="number" value="1" class="form-control" name="contractor_tool[' + index + '][number]" required> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '<div class="col-md-4"> ' +
-                        '<div class="form-group"> ' +
-                        '<label class="control-label mb-10" for="">الملاحظات</label> ' +
-                        '<div class="input-group"> ' +
-                        '<div class="input-group-addon"><i class="fas fa-male fa-lg"></i></div> ' +
-                        '<input class="form-control" name="contractor_tool[' + index + '][note]"> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '</div> ' +
-                        '<div class="col-md-1"> ' +
-                        '<a href="#" id="removeRow" style="display: block; padding-top: 35px;"><i class="fas fa-minus-circle fa-2x text-danger"></i></a> ' +
-                        '</div> ' +
-                        '</div>');
+                    '<div class="col-md-4"> ' +
+                    '<div class="form-group"> ' +
+                    '<label class="control-label mb-10" for="">المعدة</label> ' +
+                    '<div class="input-group"> ' +
+                    '<div class="input-group-addon"><i class="fab fa-gg-circle fa-lg"></i></div> ' +
+                    '<input class="form-control" name="contractor_tool[' + index + '][tool]"> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '<div class="col-md-3"> ' +
+                    '<div class="form-group"> ' +
+                    '<label class="control-label mb-10" for="">العدد</label> ' +
+                    '<div class="input-group"> ' +
+                    '<div class="input-group-addon"><i class="fas fa-sort-numeric-up fa-lg"></i></div> ' +
+                    '<input type="number" value="1" class="form-control" name="contractor_tool[' + index + '][number]" required> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '<div class="col-md-4"> ' +
+                    '<div class="form-group"> ' +
+                    '<label class="control-label mb-10" for="">الملاحظات</label> ' +
+                    '<div class="input-group"> ' +
+                    '<div class="input-group-addon"><i class="fas fa-male fa-lg"></i></div> ' +
+                    '<input class="form-control" name="contractor_tool[' + index + '][note]"> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '</div> ' +
+                    '<div class="col-md-1"> ' +
+                    '<a href="#" id="removeRow" style="display: block; padding-top: 35px;"><i class="fas fa-minus-circle fa-2x text-danger"></i></a> ' +
+                    '</div> ' +
+                    '</div>');
                 removeRow();
             });
             removeRow();
+
             function removeRow() {
                 $('a#removeRow').click(function (event) {
                     var itsRow = $(this).closest('.row');
@@ -699,6 +785,7 @@ switch (true) {
                 }
 
             });
+
             function getTests(dateFrom, dateTo, container) {
                 // var container = $("#projectTestResult");
                 var url = container.attr('data-ajax--url');
