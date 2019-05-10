@@ -19,6 +19,15 @@ class Quantity extends Model
         'date_to' => 'date',
     ];
 
+    public function owner()
+    {
+        return $this->belongsTo(Owner::class);
+    }
+    public function contractor()
+    {
+        return $this->belongsTo(Contractor::class);
+    }
+
     public function detail()
     {
         return $this->hasOne(QuantityDetails::class);

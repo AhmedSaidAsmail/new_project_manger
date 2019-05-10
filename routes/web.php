@@ -40,6 +40,7 @@ Route::group([], function () {
     Route::resource('/project/items/time-line-items', 'Admin\TimeLinesItemsController');
     Route::resource('/project/items/schedulesNew', 'Admin\SchedulesController');
     Route::resource('project/{project_id}/quantity', 'Admin\QuantitiesController');
+    Route::resource('project/{project_id}/{quantity_id}/quantity_items', 'Admin\QuantityItemsController');
 });
 // Admin Area
 Route::group(['prefix' => 'admin', 'middleware' => 'auth:web'], function () {

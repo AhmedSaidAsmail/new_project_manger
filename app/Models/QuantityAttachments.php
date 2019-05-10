@@ -29,4 +29,5 @@ class QuantityAttachments extends Model
         'notes',
         'constraints',
     ];
+    public $timestamps = false;
 }

@@ -18,14 +18,14 @@ class CreateQuantityItemsTable extends Migration
             $table->integer('quantity_id')->unsigned();
             $table->foreign('quantity_id')->references('id')->on('quantities')->onDelete('cascade');
             $table->string('sort');
-            $table->string('name');
-            $table->float('contractual_quantity')->default(0);
+            $table->text('name');
+            $table->float('contractual_quantity')->default(0)->nullable();
             $table->string('unit')->nullable();
-            $table->float('price')->default(0);
-            $table->float('total')->default(0);
-            $table->float('current_quantity')->default(0);
-            $table->float('previous_done')->default(0);
-            $table->float('current_done')->default(0);
+            $table->float('price')->default(0)->nullable();
+            $table->float('total')->default(0)->nullable();
+            $table->float('current_quantity')->default(0)->nullable();
+            $table->float('previous_done')->default(0)->nullable();
+            $table->float('current_done')->default(0)->nullable();
             $table->timestamps();
         });
     }

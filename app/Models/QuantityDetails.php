@@ -28,4 +28,5 @@ class QuantityDetails extends Model
         'date_of_last_disbursement_to_contractor' => 'date',
         'approval_date_to_owner' => 'date',
     ];
+    public $timestamps = false;
 }
