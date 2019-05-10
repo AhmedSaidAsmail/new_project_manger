@@ -3,7 +3,9 @@
     <div class="row heading-bg arabic-fonts">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <h5 class="txt-dark">
-                {{$project->name}}
+                <a href="{{route('projects.show',['id'=>$project->id])}}" class="btn btn-warning text-right">
+                    {{$project->name}} <i class="fas fa-backward"></i>
+                </a>
             </h5>
             <h5 class="txt-dark">
                 <span>المستخلص رقم <span>{{$quantity->id}}</span></span>
